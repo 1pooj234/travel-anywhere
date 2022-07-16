@@ -1,0 +1,179 @@
+.aeroplane {
+  background-color: yellow;
+  width: 100px;
+  position: absolute;
+  /* transform: rotateY(25deg) rotateX(40deg) translateX(0%); */
+  top: 80px;
+  right: 40px;
+  transform-style: preserve-3d;
+  color: cyan;
+  transition: all 1s ease-in-out;
+}
+
+.side1 {
+  background-color: black;
+  position: absolute;
+  /* width: 50px;
+  height: 100px; */
+
+  width: 25px;
+  height: 50px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.side2 {
+  position: absolute;
+  background-color: black;
+  width: 25px;
+  height: 25px;
+  /* width: 50px;
+  height: 50px; */
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.side3 {
+  position: absolute;
+  background-color: black;
+  /* width: 100px;
+  height: 50px; */
+  width: 50px;
+  height: 25px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.side1 div {
+  border: 1px solid yellow;
+}
+
+.side2 div {
+  border: 1px solid greenyellow;
+}
+
+.side2 div:nth-child(1) {
+  background: rgb(237, 11, 101);
+  background: linear-gradient(
+    90deg,
+    rgba(237, 11, 101, 1) 0%,
+    rgba(242, 68, 68, 1) 33%,
+    rgba(221, 45, 253, 1) 63%,
+    rgba(252, 176, 69, 1) 100%
+  );
+  border: none;
+}
+
+.side2 div:nth-child(2) {
+  background: rgb(237, 11, 101);
+  background: linear-gradient(
+    90deg,
+    rgba(237, 11, 101, 1) 0%,
+    rgba(242, 68, 68, 1) 33%,
+    rgba(221, 45, 253, 1) 63%,
+    rgba(252, 176, 69, 1) 100%
+  );
+  border: none;
+}
+
+.side2 div:nth-child(3) {
+  background: rgb(237, 11, 101);
+  background: linear-gradient(
+    90deg,
+    rgba(237, 11, 101, 1) 0%,
+    rgba(242, 68, 68, 1) 33%,
+    rgba(221, 45, 253, 1) 63%,
+    rgba(252, 176, 69, 1) 100%
+  );
+  border: none;
+}
+
+.side3 div {
+  border: 1px solid cyan;
+}
+
+.front {
+  transform: translateZ(25px);
+  /* transform: translateZ(50px); */
+}
+
+.back {
+  /* transform: translateZ(-50px); */
+  transform: translateZ(-25px);
+}
+
+.top {
+  /* transform: rotateX(90deg) translateZ(50px); */
+  transform: rotateX(90deg) translateZ(25px);
+}
+
+.bottom {
+  transform: rotateX(90deg);
+}
+
+.right {
+  transform: rotateY(90deg);
+  transform-style: preserve-3d;
+}
+
+.left {
+  /* transform: rotateY(90deg) translateZ(-50px); */
+  transform: rotateY(90deg) translateZ(-25px);
+
+  transform-style: preserve-3d;
+}
+
+.wing1 {
+  position: absolute;
+  /* width: 25px;
+  height: 50px; */
+  width: 12.5px;
+  height: 25px;
+  clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+  background-color: orange;
+  border: 2px solid black;
+}
+
+.wing2 {
+  position: absolute;
+  width: 12.5px;
+  height: 25px;
+  clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+  background-color: orange;
+  border: 2px solid black;
+}
+
+.w1 {
+  transform: rotateX(90deg) translate(12.5px, -12.5px) translateZ(0px);
+}
+
+.w2 {
+  transform: rotateX(90deg) translate(12.5px, -12.5px) translateZ(5px);
+}
+
+.w3 {
+  transform: rotateX(90deg) translate(12.5px, 12.5px) translateZ(0px);
+}
+
+.w4 {
+  transform: rotateX(90deg) translate(12.5px, 12.5px) translateZ(5px);
+}
+
+.move_to--second {
+  transform: translateY(600px) rotateX(-360deg);
+}
+
+.move_to--third {
+  transform: translateY(1275px) translateX(-50%) rotateZ(270deg) rotateX(-90deg);
+}
+
+.move_to--fourth {
+  transform: translateY(1950px) translateX(-75%) rotateZ(180deg) rotateY(45deg)
+    rotateX(90deg);
+}
+
+.move_to--last {
+  transform: translateY(2550px) translateX(20%) rotateY(-90deg) rotateX(0deg);
+}

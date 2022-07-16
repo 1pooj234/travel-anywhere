@@ -1,0 +1,33 @@
+.menu {
+  width: 25px;
+  height: 25px;
+  margin-top: 5px;
+  margin-right: 5px;
+  background-color: beige;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 2px 2px;
+  transform: rotateZ(0);
+  transition: all 0.5s ease;
+  border-radius: 3px;
+}
+
+.line1 {
+  background-color: blue;
+  height: 3px;
+}
+.line2 {
+  background-color: blue;
+  height: 3px;
+}
+
+.menu:hover {
+  background-color: cadetblue;
+}
+
+@media screen and (min-width: 600px) {
+  .menu {
+    display: none;
+  }
+}

@@ -1,0 +1,147 @@
+.navbar {
+  background-color: rgb(255, 0, 85);
+  position: sticky;
+  height: 40px;
+  top: 0px;
+  z-index: 3;
+  color: white;
+}
+
+.logo__img {
+  background: url("/src/assets/globe.png");
+  width: 35px;
+  height: 35px;
+  background-size: cover;
+}
+
+.cursor {
+  position: absolute;
+  z-index: 5;
+  border: 5px solid rgb(0, 0, 0);
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.252);
+  border-radius: 50%;
+  top: -3%;
+  left: -7%;
+  transform: translate(50%, 50%);
+  pointer-events: none;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  margin: 1px 0 0 20px;
+}
+
+.links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.links ul li {
+  position: relative;
+  text-align: center;
+  width: 100px;
+  padding: 10px 0;
+  float: left;
+}
+
+.link {
+  cursor: none;
+  text-decoration: none;
+  color: white;
+  transition: all 0.5s ease;
+}
+
+.link:hover {
+  font-size: 20px;
+}
+
+.links ul li ul {
+  background-color: coral;
+  border-radius: 5px;
+  top: 38px;
+  position: absolute;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(-125px);
+  transition: all 0.5s ease;
+}
+.links ul li ul li {
+  width: 100px;
+  padding: 10px 0;
+}
+
+.links ul li:hover ul {
+  transform: translateY(0px);
+  display: block;
+}
+
+.mobile_links {
+  position: absolute;
+  background-color: green;
+  width: 100%;
+  height: 40px;
+  top: 40px;
+  transform: translateX(-100%);
+  transition: all 0.5s ease-out;
+}
+
+.mobile_links ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile_links ul li {
+  position: relative;
+  text-align: center;
+  width: 50px;
+  padding: 10px 0;
+  float: left;
+}
+
+.mobile_links ul li ul {
+  background-color: coral;
+  border-radius: 5px;
+  top: 38px;
+  position: absolute;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(-165px);
+  transition: all 0.5s ease;
+}
+.mobile_links ul li ul li {
+  width: 100px;
+  padding: 10px 0;
+}
+
+.mobile_links ul li:hover ul {
+  transform: translateY(0px);
+  display: block;
+}
+
+.slide {
+  transform: translateX(0%);
+}
+
+@media screen and (max-width: 600px) {
+  .links {
+    display: none;
+  }
+}
+
+@media screen and (mi-width: 600px) {
+  .mobile_links {
+    display: none;
+  }
+}
