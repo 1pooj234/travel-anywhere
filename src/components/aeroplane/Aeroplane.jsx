@@ -28,9 +28,8 @@ const Aeroplane=()=>{
       className="aeroplane move_to--fourth"
 
     }
-      if(yOffset>1995){
+      if(yOffset>1800){
       className="aeroplane move_to--last"
-
     }
     return  <div  className={className}>
     <div className="side2 front">

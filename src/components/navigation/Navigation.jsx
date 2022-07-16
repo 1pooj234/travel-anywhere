@@ -27,11 +27,11 @@ const NavBar=(props)=>{
     const closeLinks=()=>{
         setShow(false)
     }
-    return <section>
+    return <section className="web_page">
         <div style={{
             transform:`translate(${xVal}px,${yVal}px)`
         }}
-        className="cursor">    
+        className="cursor">     
         </div>
         <nav className="navbar">
             <div className="container">
@@ -56,7 +56,7 @@ const NavBar=(props)=>{
             <div className={classLinks}>
                 <ul>
                     <li><a onClick={closeLinks} className="link" href="#">Home</a></li>
-                    <li><a onClick={closeLinks} className="link" href="#">About</a>
+                    <li><a className="link" href="#">About</a>
                         <ul>
                             <li><a onClick={closeLinks} className="link" href="#">Products</a></li>
                             <li><a onClick={closeLinks} className="link" href="#">Pricing</a></li>

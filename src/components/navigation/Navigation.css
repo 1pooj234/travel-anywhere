@@ -15,15 +15,15 @@
 }
 
 .cursor {
-  position: absolute;
+  position: fixed;
   z-index: 5;
   border: 5px solid rgb(0, 0, 0);
   width: 50px;
   height: 50px;
   background-color: rgba(0, 0, 0, 0.252);
   border-radius: 50%;
-  top: -3%;
-  left: -7%;
+  top: -20px;
+  left: -20px;
   transform: translate(50%, 50%);
   pointer-events: none;
 }
@@ -52,7 +52,6 @@
 }
 
 .link {
-  cursor: none;
   text-decoration: none;
   color: white;
   transition: all 0.5s ease;
@@ -138,10 +137,31 @@
   .links {
     display: none;
   }
+  .cursor {
+    display: none;
+  }
 }
 
-@media screen and (mi-width: 600px) {
+@media screen and (min-width: 600px) {
   .mobile_links {
     display: none;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .cursor {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .cursor {
+    display: block;
+  }
+  .web_page {
+    cursor: none;
+  }
+  .link {
+    cursor: none;
   }
 }
