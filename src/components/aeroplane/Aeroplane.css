@@ -162,7 +162,7 @@
 }
 
 .move_to--second {
-  transform: translateY(600px) rotateX(-360deg);
+  transform: translateX(-90%) translateY(600px) rotateX(-360deg);
 }
 
 .move_to--third {
@@ -170,10 +170,10 @@
 }
 
 .move_to--fourth {
-  transform: translateY(1950px) translateX(-75%) rotateZ(180deg) rotateY(45deg)
-    rotateX(90deg);
+  transform: translateX(-90%) translateY(1950px) translateX(-75%)
+    rotateZ(180deg) rotateY(45deg) rotateX(90deg);
 }
 
 .move_to--last {
-  transform: translateY(2550px) translateX(20%) rotateY(-90deg) rotateX(0deg);
+  transform: translateY(2670px) translateX(20%) rotateY(-90deg) rotateX(0deg);
 }

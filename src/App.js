@@ -3,7 +3,7 @@ import WelcomePage from "./components/welcome/Welcome";
 import AboutPage from "./components/about/About";
 import Aeroplane from "./components/aeroplane/Aeroplane";
 import NavBar from "./components/navigation/Navigation";
-import MenuBtn from "./components/menuButton/Menu";
+import Places from "./components/places/Places";
 function App() {
   return (
     <div className="App">
@@ -14,6 +14,7 @@ function App() {
         <WelcomePage />
         <AboutPage />
       </NavBar>
+      <Places />
     </div>
   );
 }

@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+}
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.drag {
+  color: rebeccapurple;
+  font-weight: bold;
+}
+
+.dragging {
+  opacity: 0.5;
+}
