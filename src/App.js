@@ -1,3 +1,4 @@
+import { Route, Routes, Navigate } from "react-router-dom";
 import "./App.css";
 import WelcomePage from "./components/welcome/Welcome";
 import AboutPage from "./components/about/About";
@@ -7,14 +8,34 @@ import Places from "./components/places/Places";
 function App() {
   return (
     <div className="App">
-      <NavBar>
-        <Aeroplane />
-        <WelcomePage />
-        <AboutPage />
-        <WelcomePage />
-        <AboutPage />
-      </NavBar>
-      <Places />
+      <Routes>
+        <Route path="/" element={<Navigate to="/" />} />
+        <Route
+          path="/"
+          element={
+            <NavBar>
+              <Aeroplane />
+              <WelcomePage />
+              <AboutPage />
+              <WelcomePage />
+              <AboutPage />
+            </NavBar>
+          }
+        />
+        <Route path="/add" element={<Places />} />
+        <Route
+          path="*"
+          element={
+            <NavBar>
+              <Aeroplane />
+              <WelcomePage />
+              <AboutPage />
+              <WelcomePage />
+              <AboutPage />
+            </NavBar>
+          }
+        />
+      </Routes>
     </div>
   );
 }

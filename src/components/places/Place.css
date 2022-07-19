@@ -1,0 +1,64 @@
+.drag {
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  padding: 10px 10px;
+  align-items: center;
+  background-color: yellow;
+  border: 1px solid darkblue;
+}
+.active {
+  background: rgb(88, 193, 246);
+  padding: 20px;
+  overflow: scroll;
+}
+.visited {
+  background: rgb(70, 251, 70);
+  padding: 20px;
+  overflow: scroll;
+}
+.dragging {
+  opacity: 0.5;
+}
+
+.place_name {
+  margin-top: -20px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+@media screen and (max-width: 450px) {
+  .active,
+  .visited {
+    height: 300px;
+    padding: 10px 10px;
+  }
+}
+
+@media screen and (min-width: 450px) {
+  .active,
+  .visited {
+    height: 300px;
+    padding: 10px 80px;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .active,
+  .visited {
+    padding: 10px 10px;
+    width: 100%;
+    height: 620px;
+  }
+  .drag {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .place_name {
+    width: 100px;
+  }
+}

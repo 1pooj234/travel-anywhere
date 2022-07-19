@@ -1,26 +1,21 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import "./Places.css";
-const AddPlaces = () => {
-  const tasks = [
-    { cat: "com", name: "Play", id: "t1" },
-    { cat: "com", name: "slay", id: "t2" },
-    { cat: "act", name: "Cook", id: "t3" },
-    { cat: "act", name: "Look", id: "t4" }
-  ];
-  const arr = ["Cook", "slay", "look", "Play"];
-  // const [cl1, setcl1] = useState("drag");
-  // const [cl2, setcl2] = useState("drag");
+import AddPlaces from "./AddPlaces";
+import Place from "./Place.jsx";
+
+const Places = () => {
+  const [places,setPlaces]=useState([])
+  const placeNamesArr = places.map(place=>place.name)
   const [selectedEl, setSelectedEl] = useState(null);
-  const [yval, setYval] = useState(null);
-  let tasksObj = {
-    com: [],
-    act: []
+  let placesObj = {
+    visited: [],
+    active: []
   };
-  tasks.forEach((task) => {
-    if (task.cat === "com") {
-      tasksObj.com.push(task);
+  places.forEach((task) => {
+    if (task.category === "visited") {
+      placesObj.visited.push(task);
     } else {
-      tasksObj.act.push(task);
+      placesObj.active.push(task);
     }
   });
 
@@ -28,7 +23,7 @@ const AddPlaces = () => {
     const drags = document.querySelectorAll("drag");
 
     drags.forEach((drag) => {
-      if (arr.includes(e.target.id)) {
+      if (placeNamesArr.includes(e.target.id)) {
         drag.className = "drag dragging";
       }
     });
@@ -36,40 +31,24 @@ const AddPlaces = () => {
   };
   const onDe1 = (e) => {
     const drags = document.querySelectorAll("drag");
-
+    
     drags.forEach((drag) => {
-      if (arr.includes(e.target.id)) {
+      if (placeNamesArr.includes(e.target.id)) {
         drag.className = "drag";
       }
     });
-    console.log(drags);
-    // const newClass = e.target.className.replace("drag dragging", "drag");
-    // console.log(newClass);
-    // setcl1(newClass);
-    // e.target.className = newClass;
-    // setSelectedEl(e.target);
+    setSelectedEl(e.target);
   };
-  // const onDs2 = (e) => {
-  //   const newClass = e.target.className.replace("drag", "drag dragging");
-  //   setcl2(newClass);
-  //   e.target.className = newClass;
-  //   setSelectedEl(e.target);
-  // };
-  // const onDe2 = (e) => {
-  //   const newClass = e.target.className.replace("drag dragging", "drag");
-  //   setcl2(newClass);
-  //   e.target.className = newClass;
-  //   setSelectedEl(e.target);
-  // };
+
 
   const insertEl = (container, y) => {
-    const eles = [...container.querySelectorAll(".drag:not(.dragging)")];
 
-    return eles.reduce(
+    const elesWithourDrag = [...container.querySelectorAll(".drag:not(.dragging)")];
+
+    return elesWithourDrag.reduce(
       (closest, child) => {
         const box = child.getBoundingClientRect();
         const offset = y - box.top - box.height / 2;
-
         if (offset < 0 && closest.offset < offset) {
           return { element: child, offset };
         } else {
@@ -81,12 +60,12 @@ const AddPlaces = () => {
   };
 
   const onDo1 = (e) => {
-    setYval(e.clientY);
-    const container1 = [document.querySelector(`.act`)];
-    const container2 = [document.querySelector(`.com`)];
-    if (e.target.className === "act") {
+    e.preventDefault()
+    const container1 = [document.querySelector(`.active`)];
+    const container2 = [document.querySelector(`.visited`)];
+    if (e.target.className.includes("active")) {
       container1.forEach((container) => {
-        const adjEl = insertEl(container, yval);
+        const adjEl = insertEl(container, e.clientY);
         if (selectedEl) {
           if (adjEl === null) {
             container.appendChild(selectedEl);
@@ -95,9 +74,9 @@ const AddPlaces = () => {
           }
         }
       });
-    } else if (e.target.className === "com") {
+    } else if (e.target.className.includes("visited")) {
       container2.forEach((container) => {
-        const adjEl = insertEl(container, yval);
+        const adjEl = insertEl(container,e.clientY);
         if (selectedEl) {
           if (adjEl === null) {
             container.appendChild(selectedEl);
@@ -111,65 +90,39 @@ const AddPlaces = () => {
     }
   };
 
-  const cont1 = tasksObj.act.map((t) => (
-    <div
-      onDragStart={onDs1}
-      onDragEnd={onDe1}
-      style={{
-        background: "yellow",
-        marginBottom: "10px"
-      }}
-      id={t.name}
-      className="drag"
-      draggable
-      key={t.id}
-    >
-      {t.name}
-    </div>
+  const cont1 = placesObj.active.map((place) =>(( 
+    <Place key={place.id} onStart={onDs1} onEnd={onDe1} name={place.name} thingsToDo={place.thingsToDo} />
+  )));
+  const cont2 = placesObj.visited.map((place) => (
+    <Place key={place.id} onStart={onDs1} onEnd={onDe1} name={place.name} thingsToDo={place.thingsToDo} />
+
   ));
-  const cont2 = tasksObj.com.map((t) => (
-    <div
-      onDragStart={onDs1}
-      onDragEnd={onDe1}
-      style={{
-        background: "yellow",
-        marginBottom: "10px"
-      }}
-      draggable
-      id={t.name}
-      className="drag"
-      key={t.id}
-    >
-      {t.name}
-    </div>
-  ));
+       
+  const addPlacesHandler=useCallback((placeObj)=>{
+    setPlaces(prev=>[...prev,placeObj])
+  },[])
+
   return (
-    <div>
-      <div
-        onDragOver={(e) => onDo1(e)}
-        style={{
-          background: "green",
-          marginBottom: "20px",
-          padding: "20px",
-          height: "50px"
-        }}
-        className="act"
-      >
-        {cont1}
-      </div>
-      <div
-        onDragOver={(e) => onDo1(e)}
-        style={{
-          background: "red",
-          marginBottom: "20px",
-          padding: "20px",
-          height: "50px"
-        }}
-        className="com"
-      >
-        {cont2}
-      </div>
-    </div>
+      <div className="places_section">
+          <AddPlaces onAdd={addPlacesHandler} />
+          <div className="container_sections">
+            <div
+              onDragOver={(e) => onDo1(e)}
+              className="active"
+              >
+                <h3 className="section_heading">Not Visited</h3>
+              {cont1}
+            </div>
+            <div
+              onDragOver={(e) => onDo1(e)}
+              
+              className="visited"
+              >
+                <h3 className="section_heading">Visited</h3>
+              {cont2}
+            </div>
+          </div>
+        </div>
   );
 };
-export default AddPlaces;
+export default Places;

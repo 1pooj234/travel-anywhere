@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import MenuBtn from "../menuButton/Menu"
 import "./Navigation.css"
+import { NavLink } from "react-router-dom"
 const NavBar=(props)=>{
 
     const [show,setShow]=useState(false)
@@ -40,14 +41,14 @@ const NavBar=(props)=>{
                 </div>
             <div className="links">
                 <ul>
-                    <li><a className="link" href="#">Home</a></li>
-                    <li><a className="link" href="#">About</a>
+                    <li><a className="link" href="/home">Home</a></li>
+                    <li><a className="link" href="/home">About</a>
                         <ul>
-                            <li><a className="link" href="#">Products</a></li>
-                            <li><a className="link" href="#">Pricing</a></li>
+                            <li><a className="link" href="/home">Products</a></li>
+                            <li><a className="link" href="/home">Pricing</a></li>
                         </ul>
                     </li>
-                    <li><a className="link" href="#">Contact</a></li>
+                    <li><a className="link" href="/home">Contact</a></li>
                 </ul> 
             </div>
 

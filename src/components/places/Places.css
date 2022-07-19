@@ -1,16 +1,25 @@
-body {
-  margin: 0;
+.places_section {
+  padding: 20px 0;
+  z-index: -1;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
 }
-.App {
-  font-family: sans-serif;
-  text-align: center;
+.container_sections {
+  height: 650px;
+  display: flex;
+  flex-direction: column;
 }
 
-.drag {
-  color: rebeccapurple;
-  font-weight: bold;
+.section_heading {
+  color: rgb(4, 11, 98);
+  margin-top: -5px;
 }
 
-.dragging {
-  opacity: 0.5;
+@media screen and (min-width: 700px) {
+  .container_sections {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
