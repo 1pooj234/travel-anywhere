@@ -19,6 +19,18 @@ const Places = () => {
     }
   });
 
+
+
+  const changePlacesCategory=(id,containerName)=>{
+    const findItem=places.filter(place=>place.id===id) 
+    console.log(findItem)
+    // places.forEach(item=>{
+    //   if(findItem.category===containerName){
+    //     item.category=containerName
+    //   }
+    // })
+  }
+
   const onDs1 = (e) => {
     const drags = document.querySelectorAll("drag");
 
@@ -44,7 +56,6 @@ const Places = () => {
   const insertEl = (container, y) => {
 
     const elesWithourDrag = [...container.querySelectorAll(".drag:not(.dragging)")];
-
     return elesWithourDrag.reduce(
       (closest, child) => {
         const box = child.getBoundingClientRect();
@@ -76,10 +87,11 @@ const Places = () => {
       });
     } else if (e.target.className.includes("visited")) {
       container2.forEach((container) => {
+
         const adjEl = insertEl(container,e.clientY);
         if (selectedEl) {
           if (adjEl === null) {
-            container.appendChild(selectedEl);
+          container.appendChild(selectedEl);
           } else {
             container.insertBefore(selectedEl, adjEl);
           }
@@ -88,13 +100,14 @@ const Places = () => {
     } else {
       return null;
     }
+  
   };
 
   const cont1 = placesObj.active.map((place) =>(( 
-    <Place key={place.id} onStart={onDs1} onEnd={onDe1} name={place.name} thingsToDo={place.thingsToDo} />
+    <Place key={place.id} onStart={onDs1} onEnd={onDe1} name={place.name} id={place.id} thingsToDo={place.thingsToDo} />
   )));
   const cont2 = placesObj.visited.map((place) => (
-    <Place key={place.id} onStart={onDs1} onEnd={onDe1} name={place.name} thingsToDo={place.thingsToDo} />
+    <Place key={place.id} onStart={onDs1} onEnd={onDe1} name={place.name} id={place.id} thingsToDo={place.thingsToDo} />
 
   ));
        

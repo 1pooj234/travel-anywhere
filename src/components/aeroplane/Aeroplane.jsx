@@ -29,6 +29,9 @@ const Aeroplane=()=>{
 
     }
       if(yOffset>1800){
+      className="aeroplane move_to--fifth"
+    }
+    if(yOffset>2500){
       className="aeroplane move_to--last"
     }
     return  <div  className={className}>

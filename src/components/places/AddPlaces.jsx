@@ -13,7 +13,7 @@ const AddPlaces=(props)=>{
     return <div className="form_place_box">
         <form onSubmit={submitHandler}>
         <div className="input_box1">
-          <input type="text" placeholder="todo" ref={placeRef} />
+          <input type="text" placeholder="Add places" ref={placeRef} />
           <div className="input_slidebar1"></div>
             <div></div>
             <button className="btn add_place_btn">Add</button>

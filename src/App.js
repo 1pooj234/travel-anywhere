@@ -8,34 +8,14 @@ import Places from "./components/places/Places";
 function App() {
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<Navigate to="/" />} />
-        <Route
-          path="/"
-          element={
-            <NavBar>
-              <Aeroplane />
-              <WelcomePage />
-              <AboutPage />
-              <WelcomePage />
-              <AboutPage />
-            </NavBar>
-          }
-        />
-        <Route path="/add" element={<Places />} />
-        <Route
-          path="*"
-          element={
-            <NavBar>
-              <Aeroplane />
-              <WelcomePage />
-              <AboutPage />
-              <WelcomePage />
-              <AboutPage />
-            </NavBar>
-          }
-        />
-      </Routes>
+      <NavBar>
+        <Aeroplane />
+        <WelcomePage />
+        <AboutPage />
+        <WelcomePage />
+        <AboutPage />
+        <Places />
+      </NavBar>
     </div>
   );
 }
