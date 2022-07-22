@@ -1,22 +1,21 @@
 import { useEffect, useState } from "react"
 import MenuBtn from "../menuButton/Menu"
 import "./Navigation.css"
-import { NavLink } from "react-router-dom"
 const NavBar=(props)=>{
 
     const [show,setShow]=useState(false)
-    const [xVal,setPageX]=useState(0)
-    const [yVal,setPageY]=useState(0)
-    const getXandYvals=(e)=>{
-        setPageX(e.pageX)
-        setPageY(e.pageY)
-    }
-    useEffect(()=>{
-        window.addEventListener("mousemove",getXandYvals)
-        return ()=>{
-            window.removeEventListener("mousemove",getXandYvals)
-        }
-    },[])
+    // const [xVal,setPageX]=useState(0)
+    // const [yVal,setPageY]=useState(0)
+    // const getXandYvals=(e)=>{
+    //     setPageX(e.pageX)
+    //     setPageY(e.pageY)
+    // }
+    // useEffect(()=>{
+    //     window.addEventListener("mousemove",getXandYvals)
+    //     return ()=>{
+    //         window.removeEventListener("mousemove",getXandYvals)
+    //     }
+    // },[])
     const openLinks=()=>{
         setShow(prev=>!prev)
     }
@@ -29,16 +28,17 @@ const NavBar=(props)=>{
         setShow(false)
     }
     return <section className="web_page">
-        <div style={{
+        {/* <div style={{
             transform:`translate(${xVal}px,${yVal}px)`
         }}
-        className="cursor">     
-        </div>
+        className="cursor">      
+        </div>*/}
         <nav className="navbar">
             <div className="container">
                 <div className="logo">
                     <img className="logo__img"/>
                 </div>
+                <p style={{color:"yellow"}}><b>scroll down</b></p>
             <div className="links">
                 <ul>
                     <li><a className="link" href="/home">Home</a></li>

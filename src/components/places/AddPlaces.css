@@ -53,3 +53,9 @@
 .add_place_btn:hover::before {
   width: 200%;
 }
+
+/* @media screen and (min-width: 1000px) {
+  .btn:hover {
+    cursor: none;
+  }
+} */

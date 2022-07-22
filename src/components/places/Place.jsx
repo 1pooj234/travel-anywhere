@@ -1,13 +1,14 @@
 import "./Place.css";
 import ThingsToDo from "./ThingsToDo.jsx";
 const Place = (props) => {
-  const { name, thingsToDo,id, onStart, onEnd } = props;
+  const { name, thingsToDo,id, onStart, onEnd,isdisabled } = props;
+
   return (
     <div draggable  id={id}  onDragStart={onStart} onDragEnd={onEnd} className="drag">
       <div className="place_name">
         <h3>{name}</h3>
       </div>
-      <ThingsToDo tdArr={thingsToDo} />
+      <ThingsToDo isdisabled={isdisabled} tdArr={thingsToDo} />
     </div>
   );
 };

@@ -6,6 +6,10 @@
   flex-direction: column;
   align-content: center;
 }
+.places_heading {
+  text-align: center;
+  margin-top: -10px;
+}
 .container_sections {
   height: 650px;
   display: flex;

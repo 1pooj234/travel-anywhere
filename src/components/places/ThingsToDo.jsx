@@ -19,7 +19,7 @@ const ThingsToDo = (props) => {
           <input type="text" placeholder="todo" ref={nameRef} />
           <div className="input_slidebar"></div>
         </div>
-        <button className="submit_btn">Add</button>
+        <button disabled={props.isdisabled} className="submit_btn">Add</button>
       </form>
       <b className="text">{todos.length === 0 ? "Add Todos" : "Veiw Todos"}</b>
       <div className="list_box">
@@ -28,8 +28,10 @@ const ThingsToDo = (props) => {
             <li className="todo" key={todo.id}>
               <p>{todo.name}</p>
               <button
+
                 className="deleteTodo_btn"
                 onClick={deleteTodos.bind(null, todo.id)}
+                disabled={props.isdisabled}
               >
                 x
               </button>

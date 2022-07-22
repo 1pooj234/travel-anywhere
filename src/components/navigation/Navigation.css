@@ -14,9 +14,9 @@
   background-size: cover;
 }
 
-.cursor {
+/* .cursor {
   display: block;
-  position: fixed;
+  position: absolute;
   z-index: 5;
   position: absolute;
   border: 5px solid rgb(0, 0, 0);
@@ -28,7 +28,7 @@
   left: -20px;
   transform: translate(50%, 50%);
   pointer-events: none;
-}
+} */
 
 .container {
   display: flex;
@@ -147,13 +147,13 @@
   }
 }
 
-@media screen and (max-width: 1000px) {
+/* @media screen and (max-width: 1000px) {
   .cursor {
     display: none;
   }
-}
+} */
 
-@media screen and (min-width: 1000px) {
+/* @media screen and (min-width: 1000px) {
   .cursor {
     display: block;
   }
@@ -163,4 +163,4 @@
   .link {
     cursor: none;
   }
-}
+} */

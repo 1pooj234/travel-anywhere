@@ -179,11 +179,11 @@
 }
 
 .move_to--last {
-  transform: translateY(3320px) translateX(-40%) rotateY(180deg) rotateX(90deg);
+  transform: translateY(3340px) translateX(-40%) rotateY(180deg) rotateX(90deg);
 }
 @media screen and (min-width: 500px) {
   .move_to--last {
-    transform: translateY(3430px) translateX(-40%) rotateY(180deg)
+    transform: translateY(3380px) translateX(-40%) rotateY(180deg)
       rotateX(90deg);
   }
 }

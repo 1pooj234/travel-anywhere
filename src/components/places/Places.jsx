@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import "./Places.css";
 import AddPlaces from "./AddPlaces";
 import Place from "./Place.jsx";
@@ -7,29 +7,15 @@ const Places = () => {
   const [places,setPlaces]=useState([])
   const placeNamesArr = places.map(place=>place.name)
   const [selectedEl, setSelectedEl] = useState(null);
-  let placesObj = {
-    visited: [],
-    active: []
-  };
-  places.forEach((task) => {
-    if (task.category === "visited") {
-      placesObj.visited.push(task);
-    } else {
-      placesObj.active.push(task);
-    }
-  });
-
-
 
   const changePlacesCategory=(id,containerName)=>{
-    const findItem=places.filter(place=>place.id===id) 
-    console.log(findItem)
-    // places.forEach(item=>{
-    //   if(findItem.category===containerName){
-    //     item.category=containerName
-    //   }
-    // })
+    const findItem=places.findIndex(place=>place.id===+id) 
+    const item=places[findItem] 
+    let updatedPlaces=[...places]
+    updatedPlaces[findItem]={...item,disabled:containerName==="visited"?true:false}
+    return updatedPlaces
   }
+
 
   const onDs1 = (e) => {
     const drags = document.querySelectorAll("drag");
@@ -69,7 +55,6 @@ const Places = () => {
       { offset: Number.NEGATIVE_INFINITY }
     ).element;
   };
-
   const onDo1 = (e) => {
     e.preventDefault()
     const container1 = [document.querySelector(`.active`)];
@@ -87,9 +72,8 @@ const Places = () => {
       });
     } else if (e.target.className.includes("visited")) {
       container2.forEach((container) => {
-
         const adjEl = insertEl(container,e.clientY);
-        if (selectedEl) {
+        if (selectedEl) {     
           if (adjEl === null) {
           container.appendChild(selectedEl);
           } else {
@@ -100,23 +84,29 @@ const Places = () => {
     } else {
       return null;
     }
-  
+    setPlaces(changePlacesCategory(selectedEl.id,e.target.className))
   };
-
-  const cont1 = placesObj.active.map((place) =>(( 
-    <Place key={place.id} onStart={onDs1} onEnd={onDe1} name={place.name} id={place.id} thingsToDo={place.thingsToDo} />
-  )));
-  const cont2 = placesObj.visited.map((place) => (
-    <Place key={place.id} onStart={onDs1} onEnd={onDe1} name={place.name} id={place.id} thingsToDo={place.thingsToDo} />
-
-  ));
-       
+  
   const addPlacesHandler=useCallback((placeObj)=>{
     setPlaces(prev=>[...prev,placeObj])
   },[])
 
+  const cont1 = places.map((place) =>{
+    if(place.category==='active'){     
+      return <Place isdisabled={place.disabled} key={place.id} onStart={onDs1} onEnd={onDe1} name={place.name} id={place.id} thingsToDo={place.thingsToDo} />
+    } 
+  });
+  const cont2 = places.map((place) => {
+    if(place.category==='visited'){
+      return<Place isdisabled={place.disabled} key={place.id} onStart={onDs1} onEnd={onDe1} name={place.name} id={place.id} thingsToDo={place.thingsToDo} />
+    }
+
+});
+       
   return (
       <div className="places_section">
+        <h2 className="places_heading">Add Your places and Todos</h2>
+        <h3 className="places_heading">Drag and drop places</h3>
           <AddPlaces onAdd={addPlacesHandler} />
           <div className="container_sections">
             <div
@@ -127,14 +117,14 @@ const Places = () => {
               {cont1}
             </div>
             <div
-              onDragOver={(e) => onDo1(e)}
-              
+              onDragOver={(e) => onDo1(e)}    
               className="visited"
               >
                 <h3 className="section_heading">Visited</h3>
               {cont2}
             </div>
           </div>
+          <p>app still under development</p>
         </div>
   );
 };
